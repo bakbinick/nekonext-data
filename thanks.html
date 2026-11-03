@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="nekonext-thanks" content="1">
+<title>NekoNext – Teşekkürler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Tek görünüm (NekoNext'in koyu mor arayüzü): büyük teşekkür sahnesi + eklentideki küçük hali */
+:root{
+  color-scheme:dark;
+  --night:#14121e;
+  --panel:#1e1a2e;
+  --line:#352d52;
+  --violet:#7c5cff;
+  --cream:#fff4e0;
+  --heart:#ff5c8a;
+  --text:#f2eefc;
+  --mut:#a9a1c4;
+  --display:"Baloo 2","Nunito",system-ui,sans-serif;
+  --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--night);color:var(--text);font:16px/1.55 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 48px}
+.wrap{max-width:980px;margin:0 auto}
+h1{font:800 clamp(28px,4vw,40px)/1.1 var(--display);margin:0 0 8px;text-wrap:balance}
+.lead{color:var(--mut);max-width:62ch;margin:0 0 26px}
+.row{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+@media (max-width:820px){.row{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.stage{position:relative;height:420px;border-radius:16px;overflow:hidden;cursor:pointer;
+  background:radial-gradient(110% 80% at 50% 95%,#3a2c6e 0%,#211a3a 55%,#16121f 100%)}
+.stage svg.girl{position:absolute;left:50%;bottom:18px;width:290px;height:362px;transform:translateX(-50%)}
+@media (max-width:520px){.stage svg.girl{width:190px;height:237px}}
+.word{position:absolute;top:58%;font:800 clamp(20px,3.4vw,28px)/1 var(--display);color:var(--cream);white-space:nowrap;text-shadow:0 3px 0 #5a3fd6}
+.word.l{right:calc(50% + 94px)}
+.word.r{left:calc(50% + 116px)}
+.word b{display:inline-block;font-weight:800}
+.play .word b{animation:drop .75s var(--d) cubic-bezier(.3,1.4,.55,1) both}
+@keyframes drop{0%{opacity:0;transform:translateY(-260px) rotate(var(--r))}55%{opacity:1}100%{opacity:1;transform:none}}
+@media (max-width:520px){.word{top:64%;font-size:18px}.word.l{right:calc(50% + 62px)}.word.r{left:calc(50% + 78px)}}
+.hearts{position:absolute;inset:0;pointer-events:none}
+.hearts span{position:absolute;left:50%;top:44%;opacity:0}
+.hearts span svg{width:100%;height:100%;display:block}
+h2{font:800 21px/1.2 var(--display);margin:2px 0 0}
+.card p{margin:0;color:var(--mut);font-size:15px}
+.again{align-self:flex-start;border:0;border-radius:12px;padding:10px 16px;font:700 14px var(--body);background:var(--violet);color:#fff;cursor:pointer}
+.again:hover{filter:brightness(1.1)}
+.again:focus-visible,.stage:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+
+/* eklentideki küçük hali: video oynatıcının köşesinde */
+.player{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,#2a2440,#120f1c)}
+.player .bar{position:absolute;left:14px;right:14px;bottom:12px;height:4px;border-radius:4px;background:#ffffff33}
+.player .bar i{display:block;width:96%;height:100%;border-radius:4px;background:var(--violet)}
+.player .next{position:absolute;left:14px;top:12px;font-size:12.5px;color:#ffffffb0}
+.toast{position:absolute;right:12px;bottom:26px;display:flex;align-items:center;gap:8px;background:rgba(20,18,30,.92);
+  border:1px solid rgba(124,92,255,.6);border-radius:12px;padding:6px 12px 6px 6px;font:700 13px var(--body);color:#fff}
+.toast svg{width:46px;height:58px}
+.toast .emo{display:inline-block;font-size:16px}
+.toast.go .emo{animation:emo .55s var(--d) cubic-bezier(.3,1.6,.5,1) both}
+@keyframes emo{0%{opacity:0;transform:scale(0) rotate(-30deg)}100%{opacity:1;transform:none}}
+.notes{margin:4px 0 0;padding-left:18px;color:var(--mut);font-size:14.5px}
+.notes li{margin-bottom:4px}
+
+/* ---- hareketler: bir kez oynar, dokununca yeniden */
+.play .body{animation:hopin .7s cubic-bezier(.3,1.5,.5,1) both;transform-origin:120px 268px}
+@keyframes hopin{0%{transform:translateY(30px) scale(.85);opacity:0}60%{transform:translateY(-8px) scale(1.03);opacity:1}100%{transform:none}}
+.play .peace{animation:peace 1.2s .5s ease-in-out both;transform-origin:88px 178px}
+@keyframes peace{0%{transform:rotate(-30deg)}35%{transform:rotate(8deg)}55%{transform:rotate(-6deg)}75%{transform:rotate(4deg)}100%{transform:none}}
+.play .wink{animation:wink .5s 1.3s both}
+.wink{transform-origin:142px 130px}
+@keyframes wink{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.6)}}
+.play .ears{animation:ears .6s 1s ease-in-out 2 both;transform-origin:120px 80px}
+@keyframes ears{0%,100%{transform:none}50%{transform:translateY(-3px) scaleY(1.04)}}
+.tail{transform-origin:156px 232px}
+.play .tail{animation:tail 1.2s ease-in-out 3 both}
+@keyframes tail{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
+.play .hold{animation:beat 1s .8s both}
+.hold{transform-origin:128px 210px}
+@keyframes beat{0%{transform:scale(.4)}45%{transform:scale(1.2)}70%{transform:scale(.95)}100%{transform:scale(1)}}
+[data-pose="a"] .pose-b,[data-pose="b"] .pose-a{display:none}
+.fh,.fh-hands{transform-origin:120px 205px}
+.play .fh-hands{animation:beat .9s .5s both}
+.play .fh{animation:beat 1s .9s both,pulse 1.2s 2s ease-in-out 2}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.pose{display:flex;gap:6px;flex-wrap:wrap}
+.pose button{border:1px solid var(--line);background:transparent;color:var(--mut);border-radius:999px;padding:7px 14px;font:700 13.5px var(--body);cursor:pointer}
+.pose button[aria-pressed="true"]{background:var(--violet);border-color:var(--violet);color:#fff}
+.langpick{margin-left:auto;display:flex;align-items:center;gap:6px;color:var(--mut);font:700 13.5px var(--body)}
+.langpick select{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font:600 13.5px var(--body)}
+.pose button:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.play .hearts span{animation:burst var(--t) var(--d) cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}12%{opacity:1}70%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1) rotate(var(--r))}}
+
+@media (prefers-reduced-motion:reduce){.play *{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
+
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.box{width:min(560px,100%)}
+.stage{height:min(78vh,520px)}
+.note{text-align:center;color:var(--mut);margin-top:16px;font-size:15px}
+</style>
+</head>
+<body data-pose="b">
+<div class="box">
+  <div class="stage" id="stage" tabindex="0" aria-label="Teşekkürler">
+    <div class="hearts" id="hearts"></div>
+    <svg class="girl" viewBox="0 0 240 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7b4ff"/><stop offset="1" stop-color="#8f74f0"/></linearGradient>
+            <linearGradient id="iris" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d1b66"/><stop offset=".55" stop-color="#6a47e0"/><stop offset="1" stop-color="#b79bff"/></linearGradient>
+            <linearGradient id="hood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b6dff"/><stop offset="1" stop-color="#6a4be8"/></linearGradient>
+          </defs>
+          <g class="body">
+            <!-- kuyruk -->
+            <path class="tail" d="M154 232 Q206 236 200 192 Q196 170 212 160" fill="none" stroke="url(#hair)" stroke-width="12" stroke-linecap="round"/>
+            <!-- arka saç -->
+            <path d="M48 120 Q44 52 120 46 Q196 52 192 120 L194 196 Q180 204 168 192 L168 150 L72 150 L72 192 Q60 204 46 196 Z" fill="url(#hair)"/>
+            <!-- bacaklar: kısa ve tombul -->
+            <rect x="99" y="236" width="15" height="24" rx="7" fill="#2a2146"/>
+            <rect x="126" y="236" width="15" height="24" rx="7" fill="#2a2146"/>
+            <ellipse cx="105" cy="262" rx="12" ry="7" fill="#fff4e0"/><ellipse cx="135" cy="262" rx="12" ry="7" fill="#fff4e0"/>
+            <!-- bol kapüşonlu üst: yuvarlak, başın altında küçük -->
+            <path d="M90 168 Q120 162 150 168 Q164 180 165 206 Q166 234 154 242 Q120 248 86 242 Q74 234 75 206 Q76 180 90 168 Z" fill="url(#hood)"/>
+            <path d="M92 170 Q120 186 148 170" fill="none" stroke="#a991ff" stroke-width="5" stroke-linecap="round"/>
+            <path d="M112 178 L111 194 M128 178 L129 194" stroke="#fff4e0" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="111" cy="196" r="3" fill="#fff4e0"/><circle cx="129" cy="196" r="3" fill="#fff4e0"/>
+            <path d="M98 218 Q120 214 142 218 L140 234 Q120 237 100 234 Z" fill="#6a4be8" opacity=".7"/>
+            <g class="pose-a">
+            <!-- kalbi göğsüne bastıran kol -->
+            <path d="M152 178 Q162 196 146 212" fill="none" stroke="url(#hood)" stroke-width="15" stroke-linecap="round"/>
+            <g class="hold">
+              <path d="M128 228 C118 220 108 214 108 205 C108 198 113 194 119 194 C123 194 126 196 128 199 C130 196 133 194 137 194 C143 194 148 198 148 205 C148 214 138 220 128 228 Z" fill="#ff5c8a"/>
+              <path d="M115 200 Q118 197 121 198" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>
+            </g>
+            <circle cx="146" cy="212" r="7.5" fill="#ffe3d3"/>
+            </g>
+            <!-- kulaklar -->
+            <g class="ears">
+              <path d="M58 82 L64 26 L104 62 Z" fill="url(#hair)"/>
+              <path d="M66 70 L69 40 L91 60 Z" fill="#ffb6cc"/>
+              <path d="M182 82 L176 26 L136 62 Z" fill="url(#hair)"/>
+              <path d="M174 70 L171 40 L149 60 Z" fill="#ffb6cc"/>
+            </g>
+            <!-- yüz -->
+            <ellipse cx="120" cy="124" rx="54" ry="49" fill="#ffe3d3"/>
+            <!-- yan perçemler -->
+            <path d="M66 96 Q58 140 70 178 Q76 150 80 120 Z" fill="url(#hair)"/>
+            <path d="M174 96 Q182 140 170 178 Q164 150 160 120 Z" fill="url(#hair)"/>
+            <!-- kahkül -->
+            <path d="M64 112 Q66 56 120 54 Q174 56 176 112 Q164 90 154 102 Q148 80 136 98 Q128 76 116 98 Q104 80 94 102 Q84 88 64 112 Z" fill="url(#hair)"/>
+            <path d="M104 64 Q112 60 122 62" fill="none" stroke="#e6dcff" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+            <!-- sol göz (açık, parlak) -->
+            <ellipse cx="98" cy="131" rx="12" ry="15" fill="url(#iris)"/>
+            <ellipse cx="98" cy="134" rx="6" ry="8" fill="#1d1040"/>
+            <circle cx="93" cy="124" r="4.5" fill="#fff"/><circle cx="103" cy="138" r="2.2" fill="#fff"/>
+            <path d="M84 120 Q98 108 112 119" fill="none" stroke="#2a1a40" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M84 120 L80 116" stroke="#2a1a40" stroke-width="3" stroke-linecap="round"/>
+            <!-- sağ göz (kırpık) -->
+            <path class="wink" d="M130 132 Q142 120 154 132" fill="none" stroke="#2a1a40" stroke-width="4" stroke-linecap="round"/>
+            <!-- yanaklar -->
+            <ellipse cx="84" cy="150" rx="9" ry="5" fill="#ff9dbb" opacity=".7"/>
+            <ellipse cx="158" cy="150" rx="9" ry="5" fill="#ff9dbb" opacity=".7"/>
+            <path d="M80 149 L84 146 M86 150 L90 147 M154 149 L158 146 M160 150 L164 147" stroke="#ff7aa3" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+            <!-- ağız: kedi gülüşü + küçük diş -->
+            <path d="M110 150 Q115 156 120 151 Q125 156 130 150" fill="none" stroke="#2a1a40" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M113 152 Q120 164 127 152 Q120 156 113 152 Z" fill="#d9486e"/>
+            <path d="M114.5 153 L117 153 L115.8 157 Z" fill="#fff"/>
+            <!-- barış işareti yapan kol: minik parmaklar -->
+            <g class="peace pose-a">
+              <path d="M90 178 Q70 172 68 152" fill="none" stroke="url(#hood)" stroke-width="15" stroke-linecap="round"/>
+              <path d="M62 142 L58 129" stroke="#ffe3d3" stroke-width="7" stroke-linecap="round"/>
+              <path d="M70 141 L72 128" stroke="#ffe3d3" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="66" cy="147" r="9" fill="#ffe3d3"/>
+              <path d="M59 150 Q65 144 73 148" fill="none" stroke="#efc4b0" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            <!-- B: iki elle kalp -->
+            <g class="pose-b">
+              <path d="M88 176 Q76 194 92 210" fill="none" stroke="#5a3fd6" stroke-width="17" stroke-linecap="round"/>
+              <path d="M152 176 Q164 194 148 210" fill="none" stroke="#5a3fd6" stroke-width="17" stroke-linecap="round"/>
+              <path d="M88 176 Q76 194 92 210" fill="none" stroke="url(#hood)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M152 176 Q164 194 148 210" fill="none" stroke="url(#hood)" stroke-width="12" stroke-linecap="round"/>
+              <g transform="translate(120 198) scale(1.55) translate(-120 -205)">
+                <path class="fh-hands" d="M120 222 C110 214 101 208 101 199 C101 193 106 189 111 189 C115 189 118 191 120 194 C122 191 125 189 129 189 C134 189 139 193 139 199 C139 208 130 214 120 222 Z" fill="none" stroke="#ffe3d3" stroke-width="5.5" stroke-linejoin="round"/>
+                <path d="M104 203 Q101 197 104 193 M136 203 Q139 197 136 193" fill="none" stroke="#efc4b0" stroke-width="1.3" stroke-linecap="round"/>
+                <path class="fh" d="M120 214 C114 209 109 206 109 201 C109 198 111.5 196 114 196 C116.5 196 118.5 197.5 120 199.5 C121.5 197.5 123.5 196 126 196 C128.5 196 131 198 131 201 C131 206 126 209 120 214 Z" fill="#ff5c8a"/>
+                <path d="M113 200 Q115 198 117 199" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".85"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+    <div class="word l" data-w=""></div>
+    <div class="word r" data-w=""></div>
+  </div>
+  <p class="note" id="note">Desteğin için teşekkürler! NekoNext seni hatırladı, bu sayfayı kapatabilirsin.</p>
+</div>
+<script src="thanks.js"></script>
+</body>
+</html>
