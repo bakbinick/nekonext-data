@@ -16,17 +16,18 @@ h1{font-size:clamp(32px,5vw,52px);line-height:1.08;margin:0 0 18px;letter-spacin
 .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding-bottom:40px}
 .feat div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}.feat h3{margin:0 0 8px;font-size:18px}.feat p{margin:0;color:var(--mut);font-size:15.5px}
 .shots{display:grid;gap:18px;padding:20px 0 60px}.shots img{width:100%;border-radius:14px;border:1px solid var(--line)}
+.pack{display:grid;grid-template-columns:1fr 180px;gap:28px;align-items:center;background:linear-gradient(135deg,rgba(255,143,184,.16),rgba(124,92,255,.14));border:1px solid rgba(255,143,184,.4);border-radius:18px;padding:28px;margin:10px 0 30px}.pack h2{margin:0 0 8px;font-size:26px}.pack p{color:var(--mut);margin:0 0 10px}.pack ul{margin:0 0 12px;padding-left:20px}.pack li{margin:4px 0}.pack .price{color:var(--txt);font-weight:700;margin:0}.pack img{width:100%}@media(max-width:760px){.pack{grid-template-columns:1fr}.pack img{display:none}}
 footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mut);font-size:14px}footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.hero img{max-width:220px}header nav{display:none}}
 </style></head>
 <body>
 <div class="wrap">
-<header><img src="img/icon.png" alt=""><b>NekoNext</b><nav><a href="#features">Features</a><a href="privacy.html">Privacy</a><a href="mailto:bakbinick@hotmail.com">Contact</a></nav></header>
+<header><img src="img/icon.png" alt=""><b>NekoNext</b><nav><a href="#features">Features</a><a href="#supporter">Supporter Pack</a><a href="privacy.html">Privacy</a><a href="mailto:bakbinick@hotmail.com">Contact</a></nav></header>
 <section class="hero">
   <div>
     <h1>Next episode, automatically.</h1>
     <p class="lead">NekoNext is a free browser extension for series and anime. It plays the next episode for you, skips openings and keeps pop-up ads out of the way.</p>
-    <a class="btn" href="mailto:bakbinick@hotmail.com?subject=NekoNext">Get in touch</a><span class="soon">Coming soon to the Chrome Web Store</span>
+    <a class="btn" href="#supporter">Supporter Pack</a><span class="soon">Free for Chrome · Chrome Web Store release in review</span>
   </div>
   <img src="img/catgirl-b.svg" alt="NekoNext mascot">
 </section>
@@ -37,6 +38,13 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mut);fon
   <div><h3>Pop-up protection</h3><p>Blocks pop-up windows and ad tabs and undoes redirects to ad sites.</p></div>
   <div><h3>Netflix, Prime Video, Disney+, HBO Max</h3><p>Presses the sites' own "Skip Intro" and "Next Episode" buttons for you.</p></div>
   <div><h3>Private and free</h3><p>No account, no tracking. Your settings stay in your browser. 12 languages.</p></div>
+</section>
+<section class="pack" id="supporter">
+  <div><h2>NekoNext Supporter Pack</h2>
+  <p>NekoNext is free and has no ads. If you enjoy it, the Supporter Pack is how you can support its development.</p>
+  <ul><li>Mascot wallpapers for desktop (2560×1440) and phone (1170×2532)</li><li>A “❤ Supporter” badge in the NekoNext menu</li><li>A thank-you animation from the NekoNext cat girl</li></ul>
+  <p class="price">Pay what you want · from $2</p></div>
+  <img src="img/catgirl-b.svg" alt="">
 </section>
 <section class="shots">
   <img src="img/1-sonraki-bolum.webp" alt="Countdown to the next episode" loading="lazy">
