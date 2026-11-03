@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "updated": "2026-11-03",
+  "platforms": {
+    "netflix": {
+      "skip": ["[data-uia=\"player-skip-intro\"]", "[data-uia=\"player-skip-recap\"]", "[data-uia=\"player-skip-preplay\"]", ".watch-video--skip-content-button", ".skip-credits a"],
+      "next": ["[data-uia=\"next-episode-seamless-button\"]", "[data-uia=\"next-episode-seamless-button-draining\"]"],
+      "still": ["[data-uia=\"interrupt-autoplay-continue\"]"]
+    },
+    "prime": {
+      "skip": [".atvwebplayersdk-skipelement-button"],
+      "next": [".atvwebplayersdk-nextupcard-button"],
+      "still": []
+    },
+    "disney": {
+      "skip": ["button.skip__button", "[data-testid=\"skip-intro-button\"]", "[data-testid=\"skip-recap-button\"]", "[data-gv2elementkey=\"skipIntro\"]"],
+      "next": ["[data-testid=\"up-next-play-button\"]", "button[data-gv2elementkey=\"playNext\"]", "[data-testid=\"next-episode-button\"]"],
+      "still": ["[data-testid=\"continue-watching-button\"]"]
+    }
+  }
+}
