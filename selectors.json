@@ -3,19 +3,60 @@
   "updated": "2026-11-03",
   "platforms": {
     "netflix": {
-      "skip": ["[data-uia=\"player-skip-intro\"]", "[data-uia=\"player-skip-recap\"]", "[data-uia=\"player-skip-preplay\"]", ".watch-video--skip-content-button", ".skip-credits a"],
-      "next": ["[data-uia=\"next-episode-seamless-button\"]", "[data-uia=\"next-episode-seamless-button-draining\"]"],
-      "still": ["[data-uia=\"interrupt-autoplay-continue\"]"]
+      "skip": [
+        "[data-uia=\"player-skip-intro\"]",
+        "[data-uia=\"player-skip-recap\"]",
+        "[data-uia=\"player-skip-preplay\"]",
+        ".watch-video--skip-content-button",
+        ".skip-credits a"
+      ],
+      "next": [
+        "[data-uia=\"next-episode-seamless-button\"]",
+        "[data-uia=\"next-episode-seamless-button-draining\"]"
+      ],
+      "still": [
+        "[data-uia=\"interrupt-autoplay-continue\"]"
+      ]
     },
     "prime": {
-      "skip": [".atvwebplayersdk-skipelement-button"],
-      "next": [".atvwebplayersdk-nextupcard-button"],
+      "skip": [
+        ".atvwebplayersdk-skipelement-button"
+      ],
+      "next": [
+        ".atvwebplayersdk-nextupcard-button"
+      ],
       "still": []
     },
     "disney": {
-      "skip": ["button.skip__button", "[data-testid=\"skip-intro-button\"]", "[data-testid=\"skip-recap-button\"]", "[data-gv2elementkey=\"skipIntro\"]"],
-      "next": ["[data-testid=\"up-next-play-button\"]", "button[data-gv2elementkey=\"playNext\"]", "[data-testid=\"next-episode-button\"]"],
-      "still": ["[data-testid=\"continue-watching-button\"]"]
+      "skip": [
+        "button.skip__button",
+        "[data-testid=\"skip-intro-button\"]",
+        "[data-testid=\"skip-recap-button\"]",
+        "[data-gv2elementkey=\"skipIntro\"]"
+      ],
+      "next": [
+        "[data-testid=\"up-next-play-button\"]",
+        "button[data-gv2elementkey=\"playNext\"]",
+        "[data-testid=\"next-episode-button\"]"
+      ],
+      "still": [
+        "[data-testid=\"continue-watching-button\"]"
+      ]
+    },
+    "hbo": {
+      "skip": [
+        "[data-testid=\"player-ux-skip-button\"]",
+        "[data-testid=\"SkipButton\"]",
+        "[class*=\"SkipButton\"]"
+      ],
+      "next": [
+        "[data-testid=\"player-ux-up-next-button\"]",
+        "[data-testid=\"UpNextButton\"]",
+        "[class*=\"UpNext\"] button"
+      ],
+      "still": [
+        "[data-testid=\"player-ux-still-watching-yes-button\"]"
+      ]
     }
   }
 }
