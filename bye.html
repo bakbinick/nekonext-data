@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NekoNext</title><link rel="icon" href="img/icon.png">
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#14121e;color:#f1eef9;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:560px;padding:32px 20px;text-align:center}img{width:150px}h1{font-size:28px;margin:10px 0 6px}p{color:#b5afcc;margin:0 0 20px}
+.r{display:grid;gap:8px;text-align:left}.r a{display:block;background:#1e1b2c;border:1px solid #2e2a42;border-radius:12px;padding:12px 16px;color:#f1eef9;text-decoration:none}.r a:hover{border-color:#ff8fb8}
+small{display:block;color:#8d87a8;margin-top:18px}</style></head>
+<body><main><img src="img/catgirl-b.svg" alt=""><h1 id="t"></h1><p id="s"></p><div class="r" id="r"></div><small id="f"></small></main>
+<script>
+const L={
+en:["Sorry to see you go","Would you tell us why? One click opens an email (nothing is sent automatically).",["It didn't work on my site","It skipped or jumped at the wrong time","Too many permissions / privacy","I don't need it anymore","Something else"],"Thanks for trying NekoNext."],
+tr:["Gitmene üzüldük","Nedenini söyler misin? Tek tıkla bir e-posta açılır (kendiliğinden hiçbir şey gönderilmez).",["Benim sitemde çalışmadı","Yanlış anda atladı ya da geçti","İzinler / gizlilik konusunda içim rahat etmedi","Artık ihtiyacım yok","Başka bir sebep"],"NekoNext'i denediğin için teşekkürler."],
+ru:["Жаль, что вы уходите","Расскажете почему? Один клик откроет письмо (ничего не отправляется автоматически).",["Не работал на моём сайте","Перематывал или переключал не вовремя","Слишком много разрешений / приватность","Больше не нужен","Другое"],"Спасибо, что попробовали NekoNext."],
+uk:["Шкода, що ви йдете","Розкажете чому? Один клік відкриє лист (нічого не надсилається автоматично).",["Не працював на моєму сайті","Перемотував чи перемикав не вчасно","Забагато дозволів / приватність","Більше не потрібен","Інше"],"Дякуємо, що спробували NekoNext."],
+ro:["Ne pare rău că pleci","Ne spui de ce? Un clic deschide un e-mail (nu se trimite nimic automat).",["Nu a mers pe site-ul meu","A sărit sau a trecut la momentul greșit","Prea multe permisiuni / confidențialitate","Nu mai am nevoie","Altceva"],"Mulțumim că ai încercat NekoNext."],
+es:["Sentimos que te vayas","¿Nos cuentas por qué? Un clic abre un correo (no se envía nada automáticamente).",["No funcionó en mi sitio","Saltó o cambió en el momento equivocado","Demasiados permisos / privacidad","Ya no lo necesito","Otra cosa"],"Gracias por probar NekoNext."],
+pt:["Que pena que você vai embora","Pode contar por quê? Um clique abre um e-mail (nada é enviado automaticamente).",["Não funcionou no meu site","Pulou ou trocou na hora errada","Permissões demais / privacidade","Não preciso mais","Outro motivo"],"Obrigado por experimentar o NekoNext."],
+fr:["Dommage que tu partes","Tu nous dis pourquoi ? Un clic ouvre un e-mail (rien n’est envoyé automatiquement).",["Ça ne marchait pas sur mon site","Ça sautait au mauvais moment","Trop de permissions / confidentialité","Je n’en ai plus besoin","Autre chose"],"Merci d’avoir essayé NekoNext."],
+de:["Schade, dass du gehst","Verrätst du uns warum? Ein Klick öffnet eine E-Mail (es wird nichts automatisch gesendet).",["Hat auf meiner Seite nicht funktioniert","Hat im falschen Moment gesprungen","Zu viele Berechtigungen / Datenschutz","Brauche ich nicht mehr","Etwas anderes"],"Danke, dass du NekoNext ausprobiert hast."],
+it:["Ci dispiace vederti andare","Ci dici perché? Un clic apre un'email (non viene inviato nulla automaticamente).",["Non funzionava sul mio sito","Saltava nel momento sbagliato","Troppi permessi / privacy","Non mi serve più","Altro"],"Grazie per aver provato NekoNext."],
+pl:["Szkoda, że odchodzisz","Powiesz dlaczego? Jedno kliknięcie otworzy e-mail (nic nie jest wysyłane automatycznie).",["Nie działał na mojej stronie","Przeskakiwał w złym momencie","Za dużo uprawnień / prywatność","Już go nie potrzebuję","Coś innego"],"Dzięki, że wypróbowałeś NekoNext."],
+ja:["ご利用ありがとうございました","よければ理由を教えてください。クリックするとメールが開きます（自動では送信されません）。",["自分のサイトで動かなかった","おかしなタイミングでスキップした","権限やプライバシーが気になった","もう必要なくなった","その他"],"NekoNextを試していただきありがとうございました。"]};
+const q=new URLSearchParams(location.search), lang=(q.get('l')||navigator.language||'en').slice(0,2), x=L[lang]||L.en, v=q.get('v')||'';
+document.documentElement.lang=L[lang]?lang:'en';
+t.textContent=x[0]; s.textContent=x[1]; f.textContent=x[3];
+for(const reason of x[2]){const a=document.createElement('a');a.textContent=reason;a.href='mailto:bakbinick@hotmail.com?subject='+encodeURIComponent('NekoNext: '+reason)+'&body='+encodeURIComponent('\n\n---\nNekoNext '+v+' · '+lang);r.appendChild(a);}
+</script></body></html>
