@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NekoNext · Watch together</title>
+<meta name="description" content="You're invited to a NekoNext watch-together room.">
+<meta property="og:title" content="NekoNext · Watch together 🍿">
+<meta property="og:description" content="You're invited to watch together. Join the room with NekoNext.">
+<meta property="og:image" content="https://bakbinick.github.io/nekonext-data/img/icon.png">
+<link rel="icon" href="img/icon.png">
+<style>
+  :root{--bg:#14121e;--card:#1e1b2c;--line:#2e2a42;--txt:#f1eef9;--mut:#b5afcc;--pink:#ff8fb8;--acc:#7c5cff}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(900px 600px at 100% -10%,rgba(255,143,184,.22),transparent 60%),radial-gradient(800px 700px at -10% 110%,rgba(124,92,255,.25),transparent 60%),var(--bg)}
+  main{width:100%;max-width:480px;padding:32px 16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 22px;text-align:center}
+  .brand{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:18px;margin-bottom:14px}.brand img{width:34px;height:34px;border-radius:8px}
+  h1{font-size:25px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+  .code{display:inline-block;font:800 28px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;background:rgba(124,92,255,.18);border:1px solid rgba(124,92,255,.5);border-radius:12px;padding:10px 16px;margin:10px 0}
+  p{color:var(--mut);margin:8px 0;font-size:15px}
+  ol{text-align:left;color:var(--mut);font-size:15px;padding-left:22px;margin:14px 0}
+  ol b{color:var(--txt)}
+  .btn{display:block;margin-top:14px;background:linear-gradient(135deg,var(--pink),var(--acc));color:#fff;border:0;border-radius:12px;padding:13px;font:700 16px system-ui,sans-serif;cursor:pointer;text-decoration:none}
+  .ghost{background:rgba(255,255,255,.08)}
+  .small{font-size:13px;margin-top:14px}
+</style>
+</head>
+<body>
+<main><div class="card">
+  <div class="brand"><img src="img/icon.png" alt="">NekoNext</div>
+  <h1 id="t"></h1>
+  <div class="code" id="code"></div>
+  <ol><li id="s1"></li><li id="s2"></li><li id="s3"></li></ol>
+  <a class="btn" id="store" href="https://chromewebstore.google.com/search/NekoNext" target="_blank" rel="noopener"></a>
+  <button class="btn ghost" id="copy" type="button"></button>
+  <p class="small" id="note"></p>
+</div></main>
+<script>
+// Eklenti kuruluysa bu sayfa açılır açılmaz eklentinin katılma sayfasına geçilir; bu metinler eklentisi olmayanlar içindir.
+const L = {
+  en: ['You\'re invited to watch together!', 'Install <b>NekoNext</b> from the Chrome Web Store.', 'Open this link again, or click the NekoNext icon → <b>Room</b> tab.', 'Enter the room code above and join.', 'Get NekoNext', 'Copy room code', 'Copied!', 'The host controls playback; everyone can chat.'],
+  tr: ['Birlikte izleme davetin var!', '<b>NekoNext</b>\'i Chrome Web Mağazası\'ndan kur.', 'Bu linki tekrar aç ya da NekoNext simgesi → <b>Oda</b> sekmesine gir.', 'Yukarıdaki oda kodunu yaz ve katıl.', 'NekoNext\'i kur', 'Oda kodunu kopyala', 'Kopyalandı!', 'Oynatmayı oda sahibi yönetir, sohbet herkese açık.'],
+  ru: ['Тебя приглашают смотреть вместе!', 'Установи <b>NekoNext</b> из Chrome Web Store.', 'Открой эту ссылку снова или нажми значок NekoNext → вкладка <b>Комната</b>.', 'Введи код комнаты выше и войди.', 'Установить NekoNext', 'Скопировать код', 'Скопировано!', 'Воспроизведением управляет хозяин, чат для всех.'],
+  uk: ['Тебе запрошують дивитися разом!', 'Встанови <b>NekoNext</b> з Chrome Web Store.', 'Відкрий це посилання знову або натисни значок NekoNext → вкладка <b>Кімната</b>.', 'Введи код кімнати вище й увійди.', 'Встановити NekoNext', 'Скопіювати код', 'Скопійовано!', 'Відтворенням керує господар, чат для всіх.'],
+  ro: ['Ești invitat să vă uitați împreună!', 'Instalează <b>NekoNext</b> din Chrome Web Store.', 'Deschide din nou acest link sau apasă pictograma NekoNext → fila <b>Cameră</b>.', 'Scrie codul camerei de mai sus și intră.', 'Instalează NekoNext', 'Copiază codul', 'Copiat!', 'Gazda controlează redarea, chatul e pentru toți.'],
+  es: ['¡Te invitaron a ver juntos!', 'Instala <b>NekoNext</b> desde Chrome Web Store.', 'Abre este enlace otra vez o pulsa el icono de NekoNext → pestaña <b>Sala</b>.', 'Escribe el código de arriba y únete.', 'Instalar NekoNext', 'Copiar código', '¡Copiado!', 'El anfitrión controla la reproducción; el chat es para todos.'],
+  pt: ['Você foi convidado para assistir junto!', 'Instale o <b>NekoNext</b> pela Chrome Web Store.', 'Abra este link de novo ou clique no ícone do NekoNext → aba <b>Sala</b>.', 'Digite o código acima e entre.', 'Instalar NekoNext', 'Copiar código', 'Copiado!', 'O anfitrião controla a reprodução; o chat é para todos.'],
+  fr: ['Tu es invité à regarder ensemble !', 'Installe <b>NekoNext</b> depuis le Chrome Web Store.', 'Rouvre ce lien ou clique sur l\'icône NekoNext → onglet <b>Salon</b>.', 'Saisis le code ci-dessus et rejoins.', 'Installer NekoNext', 'Copier le code', 'Copié !', 'L\'hôte contrôle la lecture ; le chat est ouvert à tous.'],
+  de: ['Du bist zum gemeinsamen Schauen eingeladen!', 'Installiere <b>NekoNext</b> aus dem Chrome Web Store.', 'Öffne diesen Link erneut oder klicke auf das NekoNext-Symbol → Tab <b>Raum</b>.', 'Gib den Raumcode oben ein und tritt bei.', 'NekoNext holen', 'Code kopieren', 'Kopiert!', 'Der Gastgeber steuert die Wiedergabe; alle können chatten.'],
+  it: ['Sei invitato a guardare insieme!', 'Installa <b>NekoNext</b> dal Chrome Web Store.', 'Riapri questo link o clicca l\'icona di NekoNext → scheda <b>Stanza</b>.', 'Inserisci il codice qui sopra ed entra.', 'Installa NekoNext', 'Copia codice', 'Copiato!', 'L\'host controlla la riproduzione; la chat è per tutti.'],
+  pl: ['Masz zaproszenie do wspólnego oglądania!', 'Zainstaluj <b>NekoNext</b> z Chrome Web Store.', 'Otwórz ten link ponownie albo kliknij ikonę NekoNext → karta <b>Pokój</b>.', 'Wpisz powyższy kod i dołącz.', 'Pobierz NekoNext', 'Kopiuj kod', 'Skopiowano!', 'Gospodarz steruje odtwarzaniem; czat jest dla wszystkich.'],
+  ja: ['一緒に見る招待が届いています！', 'Chrome ウェブストアから <b>NekoNext</b> をインストール。', 'このリンクをもう一度開くか、NekoNext アイコン →「<b>ルーム</b>」タブを開く。', '上のルームコードを入力して参加。', 'NekoNext を入手', 'コードをコピー', 'コピーしました！', '再生はホストが操作し、チャットは全員が使えます。']
+};
+const lang = (navigator.languages || [navigator.language || 'en']).map((l) => l.slice(0, 2).toLowerCase()).find((l) => L[l]) || 'en';
+const t = L[lang];
+document.documentElement.lang = lang;
+const code = (new URLSearchParams(location.search).get('oda') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+document.getElementById('t').textContent = t[0];
+['s1', 's2', 's3'].forEach((id, i) => { document.getElementById(id).innerHTML = t[i + 1]; });
+document.getElementById('code').textContent = code ? code.slice(0, 3) + ' ' + code.slice(3) : '— — —';
+document.getElementById('store').textContent = t[4];
+const cp = document.getElementById('copy');
+cp.textContent = t[5];
+cp.onclick = async () => { try { await navigator.clipboard.writeText(code); cp.textContent = t[6]; setTimeout(() => { cp.textContent = t[5]; }, 1500); } catch (e) {} };
+document.getElementById('note').textContent = t[7];
+</script>
+</body>
+</html>
