@@ -4,8 +4,8 @@
 <style>body{margin:0;background:#14121e;color:#ecebf5;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:720px;margin:0 auto;padding:48px 20px 80px}h1{font-size:30px;margin:0 0 6px}h2{font-size:19px;margin:32px 0 8px;color:#c9b8ff}p,li{color:#d6d3e6}.d{color:#9d99b5;font-size:14px}hr{border:0;border-top:1px solid #2e2a42;margin:44px 0}a{color:#c9b8ff}</style></head>
 <body><main>
 <h1>NekoNext – Privacy Policy</h1>
-<p class="d">Last updated: November 3, 2026</p>
-<p>NekoNext is a browser extension that moves to the next episode automatically, skips openings and blocks pop-up ads while you watch series and anime.</p>
+<p class="d">Last updated: November 14, 2026</p>
+<p>NekoNext is a browser extension for a better watching experience on video sites: it moves to the next episode automatically, skips openings, blocks pop-up ads, lets you watch together with friends in rooms (with chat and an optional voice room) and can translate subtitles.</p>
 <h2>What data NekoNext uses</h2>
 <ul>
 <li><strong>Settings</strong> (enabled sites, timings, language, learned buttons): stored in your browser with Chrome sync storage.</li>
@@ -15,7 +15,7 @@
 <h2>What NekoNext does not do</h2>
 <ul>
 <li>It does not collect, sell or share personal data.</li>
-<li>It does not send your browsing or watch history to any server. There are no analytics or tracking.</li>
+<li>It does not send your browsing or watch history to any server. There are no analytics or tracking. The only exceptions are the optional room features described below, which you choose to use.</li>
 <li>Watch statistics (episodes and time saved by skipping) never leave your device.</li>
 <li>It does not read page content except to find the video player, episode links and skip / next buttons on the sites where it runs.</li>
 </ul>
@@ -23,17 +23,28 @@
 <p>Once a day NekoNext may download a public list of button names (<code>selectors.json</code>) from this website so that it keeps working when streaming sites change their buttons. This request contains no personal data.</p>
 <p>When you uninstall NekoNext, a short page on this website opens with your interface language and the extension version in the address, so you can optionally tell us why. Nothing is sent unless you choose to write.</p>
 <p><strong>Report a problem</strong> opens your own email app with a draft that contains the extension version, your browser version and the recent event log. You see the whole message and decide whether to send it.</p>
-<h2>Watch together (optional, beta)</h2>
-<p>If you create or join a room, NekoNext connects to our room server (<code>nekonext-party.bakbinick.workers.dev</code>, run on Cloudflare) to keep everyone in sync. It sends the room code, the nickname you choose, the address and position of the video in the room tab, play/pause state, and the chat messages and emojis you send. This data is held only in memory while the room is open and is deleted when everyone leaves; it is not stored, logged or shared. Room members see your nickname and chat messages.</p>
+<h2>Watch together rooms (optional)</h2>
+<p>If you create or join a room, NekoNext connects to our room server (<code>nekonext-party.bakbinick.workers.dev</code>, run on Cloudflare) to keep everyone in sync. It sends the room code, the nickname you choose, the address and position of the video in the room tab, play/pause state, and the chat messages, replies, emojis and stickers you send. Chat messages are passed on to the people in the room and are not saved on the server. Room settings (room name, theme, the current video address, slow mode, helpers and removed members) are kept on the server only while the room exists and are deleted automatically when the room has been inactive for 6 hours. Room members see your nickname and messages.</p>
+<p><strong>Public rooms:</strong> if the room owner makes a room public, it appears in the "Live rooms" list that every NekoNext user can see, with the room name, the number of people, the website name, the page title of the video and the owner's nickname. Addresses, other nicknames and chat are not shown in the list. Anyone can join a public room.</p>
+<p><strong>Reports:</strong> in public rooms you can report a member (spam, insults, inappropriate content). A report stores the room code and name, the page title, the reported nickname, the reason and your nickname. Reports are used only to keep public rooms safe; they are kept until they are replaced by newer ones (at most the latest 300). If three different people report a room owner, the room is hidden from the live list for 24 hours.</p>
+<h2>Voice room (optional)</h2>
+<p>The voice room uses your microphone only after you join it, and Chrome asks you for microphone access first. Voice goes directly between the people in the voice room (WebRTC); it does not pass through our server and is never recorded. To connect directly, your browser contacts public STUN servers (Google, Cloudflare), which see your IP address, as with any video call. Our room server only passes the connection setup messages.</p>
+<h2>Music themes and equalizer (optional)</h2>
+<p>If you start the equalizer theme, NekoNext reads the sound of that tab to draw the visuals. The sound is analysed on your device and is never recorded or sent anywhere.</p>
+<h2>Live translation (optional, beta)</h2>
+<p>Subtitle translation uses Chrome's built-in translation model on your device; subtitle text is not sent to us. When you use "Listen & translate audio", the tab's sound is turned into text by Chrome's speech recognition. If an on-device model is available it stays on your device; otherwise Chrome may use Google's speech recognition service, and the menu tells you which one is in use. NekoNext never sends this audio or text to our server.</p>
+<h2>Support and payments</h2>
+<p>Supporting NekoNext and future Pro features are sold through Lemon Squeezy, which acts as the seller (merchant of record) and processes payments. We never see your card details. For an order we receive the information Lemon Squeezy shares with sellers, such as your name, email address and what you bought, and use it only to deliver your purchase and answer support requests. Lemon Squeezy's own privacy policy applies to the payment.</p>
 <h2>Permissions</h2>
+<p>Microphone and tab sound (used by the voice room, equalizer and audio translation) are optional permissions: Chrome asks for them only the first time you turn one of these features on.</p>
 <p>At install, NekoNext only has access to Netflix, Prime Video, Disney+, HBO Max and Crunchyroll (you can turn these off in the menu). The first time you switch on "Work on this site" for another site, Chrome asks you for access to websites; it is requested for all sites because video players are often embedded from other domains. Even then NekoNext only acts on the sites you enable: it detects the player and the next episode, closes ad tabs and undoes ad redirects. You can remove this access at any time in Chrome's extension settings.</p>
 <p><strong>Settings backup</strong> creates a file on your own computer only when you click it; restoring reads a file you choose. Nothing is uploaded.</p>
 <h2>Contact</h2>
 <p>Questions: <a href="mailto:bakbinick@hotmail.com">bakbinick@hotmail.com</a></p>
 <hr>
 <h1>NekoNext – Gizlilik Politikası</h1>
-<p class="d">Son güncelleme: 3 Kasım 2026</p>
-<p>NekoNext, dizi ve anime izlerken otomatik olarak sonraki bölüme geçen, opening atlayan ve pop-up reklamları engelleyen bir tarayıcı eklentisidir.</p>
+<p class="d">Son güncelleme: 14 Kasım 2026</p>
+<p>NekoNext, video sitelerinde daha iyi bir izleme deneyimi için bir tarayıcı eklentisidir: otomatik olarak sonraki bölüme geçer, opening atlar, pop-up reklamları engeller, arkadaşlarınla odalarda birlikte izlemeni (sohbet ve isteğe bağlı ses odasıyla) sağlar ve altyazıları çevirebilir.</p>
 <h2>Kullanılan veriler</h2>
 <ul>
 <li><strong>Ayarlar</strong> (etkin siteler, süreler, dil, öğretilen düğmeler): tarayıcında Chrome senkronizasyon depolamasında tutulur.</li>
@@ -43,16 +54,27 @@
 <h2>NekoNext'in yapmadıkları</h2>
 <ul>
 <li>Kişisel veri toplamaz, satmaz, paylaşmaz.</li>
-<li>Gezinme veya izleme geçmişini hiçbir sunucuya göndermez. Analiz veya takip yoktur.</li>
+<li>Gezinme veya izleme geçmişini hiçbir sunucuya göndermez. Analiz veya takip yoktur. Tek istisna, aşağıda anlatılan ve kendi isteğinle kullandığın oda özellikleridir.</li>
 <li>Sayfa içeriğini, çalıştığı sitelerde video oynatıcıyı, bölüm bağlantılarını ve atla/sonraki düğmelerini bulmak dışında okumaz.</li>
 </ul>
 <h2>İnternet istekleri</h2>
 <p>NekoNext, yayın siteleri düğmelerini değiştirdiğinde de çalışmaya devam etmek için günde bir kez bu siteden herkese açık bir düğme listesi (<code>selectors.json</code>) indirebilir. Bu istek kişisel veri içermez.</p>
 <p>NekoNext'i kaldırdığında bu sitede kısa bir sayfa açılır; adreste arayüz dilin ve eklenti sürümü bulunur, istersen neden kaldırdığını yazabilirsin. Sen yazmadıkça hiçbir şey gönderilmez.</p>
 <p><strong>Sorun bildir</strong>, kendi e-posta uygulamanda eklenti sürümü, tarayıcı sürümü ve son olayları içeren bir taslak açar. Mesajın tamamını görürsün, göndermek sana kalmıştır.</p>
-<h2>Birlikte izle (isteğe bağlı, beta)</h2>
-<p>Bir oda kurarsan veya katılırsan NekoNext, herkesi senkron tutmak için oda sunucumuza (<code>nekonext-party.bakbinick.workers.dev</code>, Cloudflare üzerinde) bağlanır. Oda kodu, seçtiğin takma ad, oda sekmesindeki videonun adresi ve konumu, oynat/duraklat durumu ve gönderdiğin sohbet mesajları ile emojiler iletilir. Bu veriler yalnız oda açıkken bellekte tutulur ve herkes çıkınca silinir; kaydedilmez, günlüğe yazılmaz, paylaşılmaz. Odadakiler takma adını ve mesajlarını görür.</p>
+<h2>Birlikte izleme odaları (isteğe bağlı)</h2>
+<p>Bir oda kurarsan veya katılırsan NekoNext, herkesi senkron tutmak için oda sunucumuza (<code>nekonext-party.bakbinick.workers.dev</code>, Cloudflare üzerinde) bağlanır. Oda kodu, seçtiğin takma ad, oda sekmesindeki videonun adresi ve konumu, oynat/duraklat durumu ve gönderdiğin sohbet mesajları, yanıtlar, emojiler ve çıkartmalar iletilir. Sohbet mesajları odadakilere aktarılır, sunucuda saklanmaz. Oda ayarları (oda adı, tema, o anki video adresi, yavaş mod, yardımcılar ve odadan çıkarılanlar) yalnız oda var olduğu sürece sunucuda tutulur ve oda 6 saat hareketsiz kalınca kendiliğinden silinir. Odadakiler takma adını ve mesajlarını görür.</p>
+<p><strong>Herkese açık odalar:</strong> oda sahibi odayı herkese açık yaparsa oda, tüm NekoNext kullanıcılarının görebildiği "Canlı odalar" listesinde oda adı, kişi sayısı, site adı, videonun sayfa başlığı ve oda sahibinin takma adıyla görünür. Adresler, diğer takma adlar ve sohbet listede görünmez. Herkese açık odaya herkes katılabilir.</p>
+<p><strong>Şikâyetler:</strong> herkese açık odalarda bir üyeyi bildirebilirsin (spam, hakaret, uygunsuz içerik). Şikâyet; oda kodunu ve adını, sayfa başlığını, bildirilen takma adı, sebebi ve senin takma adını içerir. Şikâyetler yalnız herkese açık odaları güvenli tutmak için kullanılır ve yenileri geldikçe silinir (en fazla son 300 tanesi tutulur). Bir oda sahibi üç farklı kişi tarafından bildirilirse oda 24 saat canlı listeden gizlenir.</p>
+<h2>Ses odası (isteğe bağlı)</h2>
+<p>Ses odası mikrofonunu yalnız sen katıldıktan sonra kullanır; önce Chrome senden mikrofon izni ister. Ses, ses odasındaki kişiler arasında doğrudan gider (WebRTC); sunucumuzdan geçmez ve hiçbir zaman kaydedilmez. Doğrudan bağlanmak için tarayıcın herkese açık STUN sunucularıyla (Google, Cloudflare) iletişim kurar; bunlar, her görüntülü aramada olduğu gibi IP adresini görür. Oda sunucumuz yalnız bağlantı kurulum mesajlarını aktarır.</p>
+<h2>Müzik temaları ve ekolayzır (isteğe bağlı)</h2>
+<p>Ekolayzır temasını başlatırsan NekoNext görselleri çizmek için o sekmenin sesini okur. Ses cihazında incelenir; hiçbir zaman kaydedilmez veya bir yere gönderilmez.</p>
+<h2>Canlı çeviri (isteğe bağlı, beta)</h2>
+<p>Altyazı çevirisi, Chrome'un cihazında çalışan yerleşik çeviri modelini kullanır; altyazı metni bize gönderilmez. "Sesi dinle ve çevir"i kullandığında sekmenin sesi Chrome'un konuşma tanımasıyla yazıya dökülür. Cihaz içi model varsa ses cihazında kalır; yoksa Chrome Google'ın konuşma tanıma servisini kullanabilir, menü hangisinin kullanıldığını gösterir. NekoNext bu sesi veya metni hiçbir zaman sunucumuza göndermez.</p>
+<h2>Destek ve ödemeler</h2>
+<p>NekoNext'e destek ve ileride gelecek Pro özellikleri, satıcı (merchant of record) olarak ödemeleri işleyen Lemon Squeezy üzerinden satılır. Kart bilgilerini hiçbir zaman görmeyiz. Bir sipariş için Lemon Squeezy'nin satıcılarla paylaştığı bilgileri (adın, e-posta adresin ve ne aldığın gibi) alırız ve bunları yalnız satın aldığını teslim etmek ve destek taleplerini yanıtlamak için kullanırız. Ödeme için Lemon Squeezy'nin kendi gizlilik politikası geçerlidir.</p>
 <h2>İzinler</h2>
+<p>Mikrofon ve sekme sesi (ses odası, ekolayzır ve ses çevirisi için) isteğe bağlı izinlerdir: Chrome bunları yalnız bu özelliklerden birini ilk kez açtığında sorar.</p>
 <p>Kurulumda NekoNext yalnız Netflix, Prime Video, Disney+, HBO Max ve Crunchyroll'a erişebilir (menüden kapatılabilir). Başka bir sitede ilk kez "Bu sitede çalışsın"ı açtığında Chrome sana sitelere erişim izni sorar; video oynatıcılar çoğu zaman başka alan adlarından gömüldüğü için izin tüm siteler için istenir. Yine de NekoNext yalnız açtığın sitelerde çalışır. Bu izni istediğin zaman Chrome'un eklenti ayarlarından kaldırabilirsin.</p>
 <p><strong>Ayar yedeği</strong> yalnız sen tıkladığında kendi bilgisayarında bir dosya oluşturur; geri yükleme senin seçtiğin dosyayı okur. Hiçbir şey yüklenmez.</p>
 <h2>İletişim</h2>
