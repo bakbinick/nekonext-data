@@ -1,4 +1,4 @@
-// NekoNext — destek teşekkür sayfası: tarayıcı dilinde metin, harf harf beliren başlık, süzülen kalpler, görsele tıklayınca kalp patlaması.
+// NekoNext — destek teşekkür sayfası: tarayıcı dilinde metin, harf harf beliren başlık, süzülen kalpler, her açılışta rastgele Neko pozu; tıklayınca poz değişir ve kalpler patlar.
 // Eklenti bu sayfayı <meta name="nekonext-thanks"> ile tanır ve kişiyi destekçi olarak hatırlar.
 (() => {
   'use strict';
@@ -71,6 +71,16 @@
     }
     frame.parentNode.appendChild(b); setTimeout(() => b.remove(), 1800);
   }
-  frame.addEventListener('click', burst);
+  // her açılışta rastgele poz; tıklayınca diğer poza geçer
+  const POSES = ['img/neko-heart.webp', 'img/neko-peace.webp'];
+  POSES.forEach((p) => { const i = new Image(); i.src = p; });
+  let pose = Math.floor(Math.random() * POSES.length);
+  frame.src = POSES[pose];
+  frame.addEventListener('click', () => {
+    pose = (pose + 1) % POSES.length;
+    frame.classList.remove('sw'); void frame.offsetWidth; frame.classList.add('sw');
+    setTimeout(() => { frame.src = POSES[pose]; }, 110);
+    burst();
+  });
   setTimeout(burst, 1300);
 })();

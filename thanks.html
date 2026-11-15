@@ -39,15 +39,21 @@ h1 .h{color:var(--heart);display:inline-block;font-size:.62em;margin-left:.18em;
 .btn:hover{transform:translateY(-2px)}
 .btn.p{color:#fff;background:linear-gradient(135deg,var(--violet2),var(--violet));box-shadow:0 12px 28px rgba(109,74,224,.35)}
 .btn.s{color:var(--violet);background:#fff;border:1px solid var(--line)}
-/* görsel */
-.art{position:relative;opacity:0;animation:pop .8s .25s cubic-bezier(.2,.9,.3,1.2) forwards}
-.frame{position:relative;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(70,35,150,.35),0 0 0 6px rgba(255,255,255,.75);cursor:pointer;animation:bob 6s ease-in-out infinite}
-.frame img{display:block;width:100%;height:auto}
-.glow{position:absolute;inset:-30px;background:radial-gradient(closest-side,rgba(255,143,184,.45),transparent);filter:blur(10px);z-index:-1}
-.hearts{position:absolute;inset:0;pointer-events:none;overflow:visible}
+/* görsel: arka plansız Neko, rastgele poz */
+.art{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:600px;opacity:0;animation:pop .8s .25s cubic-bezier(.2,.9,.3,1.2) forwards}
+.halo{position:absolute;left:50%;top:6%;width:min(92%,500px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#fff 0,#ffe0ec 30%,#d9c8ff 68%,#b9a0ff 100%);box-shadow:0 30px 80px rgba(110,70,220,.28),inset 0 0 0 10px rgba(255,255,255,.55)}
+.spark{position:absolute;color:#b79bff;font-size:22px;animation:tw 2.4s ease-in-out infinite}
+.floor{position:absolute;bottom:14px;left:50%;width:46%;height:22px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(60,30,120,.28),transparent);animation:sh 6s ease-in-out infinite}
+.neko{position:relative;z-index:1;height:580px;width:auto;cursor:pointer;user-select:none;-webkit-user-drag:none;filter:drop-shadow(0 14px 18px rgba(70,35,150,.22));transform-origin:50% 100%;animation:bob 6s ease-in-out infinite;margin-bottom:22px}
+.neko.sw{animation:sw .34s ease}
+.hearts{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:2}
 .hearts span{position:absolute;bottom:10%;width:18px;height:18px;opacity:0;animation:float var(--t) var(--d) ease-in infinite}
-.burst span{position:absolute;left:50%;top:50%;width:22px;height:22px;opacity:0;animation:burst 1.4s ease-out forwards}
-.tag{position:absolute;left:-18px;bottom:28px;background:#fff;border-radius:16px;padding:10px 14px;font-weight:800;font-size:14px;box-shadow:0 14px 30px rgba(60,30,120,.2);display:flex;gap:8px;align-items:center}
+.burst span{position:absolute;left:50%;top:45%;width:22px;height:22px;opacity:0;animation:burst 1.4s ease-out forwards}
+.tag{position:absolute;z-index:3;left:0;top:30%;background:#fff;border-radius:16px 16px 16px 4px;padding:10px 14px;font-weight:800;font-size:14px;box-shadow:0 14px 30px rgba(60,30,120,.2);display:flex;gap:8px;align-items:center;animation:bob 5s 1s ease-in-out infinite}
+@keyframes sw{0%{transform:scale(1)}35%{transform:scaleX(1.06) scaleY(.9)}70%{transform:scaleX(.97) scaleY(1.05)}100%{transform:none}}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes sh{50%{transform:translateX(-50%) scale(.88);opacity:.8}}
 /* desteğin neye dönüşüyor */
 .next{margin-top:56px;opacity:0;animation:up .6s 1.4s ease forwards}
 .next h2{font:800 26px var(--display);margin:0 0 14px}
@@ -61,7 +67,7 @@ footer{margin-top:40px;font-size:13px;color:var(--mut);display:flex;gap:16px;fle
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
 @keyframes float{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:.95}100%{opacity:0;transform:translate(var(--x),-340px) scale(1.1) rotate(var(--r))}}
 @keyframes burst{0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.1) rotate(var(--r))}}
-@media (max-width:860px){.hero{grid-template-columns:1fr;gap:28px}.art{order:-1;max-width:520px;margin:0 auto}.grid{grid-template-columns:1fr}.tag{left:10px}}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:20px}.art{order:-1;width:100%;max-width:440px;margin:0 auto;min-height:440px}.neko{height:420px}.grid{grid-template-columns:1fr}.tag{left:0;top:auto;bottom:34%}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
 </style>
 </head>
@@ -79,9 +85,10 @@ footer{margin-top:40px;font-size:13px;color:var(--mut);display:flex;gap:16px;fle
         <a class="btn s" id="back" href="https://chromewebstore.google.com/detail/pggapfaakjffefgmdlioapcllechjbhl" target="_blank" rel="noopener">⭐ <span></span></a>
       </div>
     </div>
-    <div class="art">
-      <div class="glow"></div>
-      <div class="frame" id="frame"><img src="img/neko-tesekkur.webp" alt="Neko" width="900" height="857"></div>
+    <div class="art" id="art">
+      <div class="halo"></div><div class="floor"></div>
+      <span class="spark" style="left:10%;top:14%">✦</span><span class="spark" style="right:9%;top:26%;animation-delay:.8s">✦</span><span class="spark" style="right:16%;bottom:22%;animation-delay:1.5s;font-size:16px">✦</span>
+      <img class="neko" id="frame" src="img/neko-heart.webp" alt="Neko" width="493" height="741">
       <div class="hearts" id="hearts"></div>
       <div class="tag">🐾 <span id="tag"></span></div>
     </div>
