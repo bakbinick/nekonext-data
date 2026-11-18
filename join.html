@@ -10,61 +10,84 @@
 <meta property="og:image" content="https://bakbinick.github.io/nekonext-data/img/icon.png">
 <link rel="icon" href="img/icon.png">
 <style>
-  :root{--bg:#14121e;--card:#1e1b2c;--line:#2e2a42;--txt:#f1eef9;--mut:#b5afcc;--pink:#ff8fb8;--acc:#7c5cff}
+  :root{--card:rgba(30,24,48,.84);--line:rgba(255,255,255,.12);--txt:#fff6fb;--mut:#d6cbe8;--pink:#ff8fb8;--acc:#7c5cff;--gold:#ffd27a}
+  html{background:#2a1840}
   *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(900px 600px at 100% -10%,rgba(255,143,184,.22),transparent 60%),radial-gradient(800px 700px at -10% 110%,rgba(124,92,255,.25),transparent 60%),var(--bg)}
-  main{width:100%;max-width:480px;padding:32px 16px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 22px;text-align:center}
-  .brand{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:18px;margin-bottom:14px}.brand img{width:34px;height:34px;border-radius:8px}
-  h1{font-size:25px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
-  .code{display:inline-block;font:800 28px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;background:rgba(124,92,255,.18);border:1px solid rgba(124,92,255,.5);border-radius:12px;padding:10px 16px;margin:10px 0}
-  p{color:var(--mut);margin:8px 0;font-size:15px}
-  ol{text-align:left;color:var(--mut);font-size:15px;padding-left:22px;margin:14px 0}
+  body{margin:0;min-height:100vh;color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;
+    background:radial-gradient(60% 45% at 50% 108%,rgba(255,170,110,.32),transparent 70%),radial-gradient(700px 500px at 85% 0%,rgba(255,143,184,.28),transparent 60%),
+    radial-gradient(800px 600px at 0% 100%,rgba(124,92,255,.40),transparent 60%),linear-gradient(180deg,#1d1638 0%,#2a1840 55%,#3a1d3f 100%) fixed}
+  .sky{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(2px 2px at 12% 18%,#fff8,transparent),radial-gradient(1.5px 1.5px at 28% 8%,#fff9,transparent),
+    radial-gradient(2px 2px at 70% 14%,#fff7,transparent),radial-gradient(1.5px 1.5px at 88% 30%,#fff8,transparent),radial-gradient(2px 2px at 46% 22%,#fff6,transparent),
+    radial-gradient(1.5px 1.5px at 6% 52%,#fff7,transparent),radial-gradient(1.5px 1.5px at 94% 64%,#fff6,transparent)}
+  .fl{position:fixed;font-size:22px;opacity:.7;pointer-events:none;animation:fl 7s ease-in-out infinite}
+  @keyframes fl{50%{transform:translateY(-14px) rotate(8deg)}}
+  main{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  .neko{height:min(80vh,600px);margin-right:-56px;position:relative;z-index:2;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));animation:bob 4s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-8px)}}
+  .card{position:relative;width:100%;max-width:440px;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;padding:30px 26px 24px 60px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,210,122,.14);color:var(--gold);border:1px solid rgba(255,210,122,.35);border-radius:99px;padding:4px 12px;font-size:13px;font-weight:700}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;margin:14px 0 4px}.brand img{width:30px;height:30px;border-radius:8px}
+  h1{font-size:30px;line-height:1.15;margin:4px 0 8px;letter-spacing:-.02em;background:linear-gradient(90deg,#fff 30%,var(--pink) 70%,#c9a2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--mut);margin:0 0 14px}
+  .code{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(124,92,255,.18);border:1px dashed rgba(201,162,255,.6);border-radius:14px;padding:10px 10px 10px 18px;margin:6px 0 14px}
+  .code b{font:800 28px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em}
+  .code button{flex:0 0 auto;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:10px;padding:8px 12px;font:700 14px system-ui,sans-serif;cursor:pointer}.code button:hover{background:rgba(255,255,255,.2)}
+  ol{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;color:var(--mut);font-size:15px;margin:8px 0}
+  ol li::before{content:counter(s);flex:0 0 24px;height:24px;margin-top:1px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--acc));color:#fff;font:800 13px/24px system-ui,sans-serif;text-align:center}
   ol b{color:var(--txt)}
-  .btn{display:block;margin-top:14px;background:linear-gradient(135deg,var(--pink),var(--acc));color:#fff;border:0;border-radius:12px;padding:13px;font:700 16px system-ui,sans-serif;cursor:pointer;text-decoration:none}
-  .ghost{background:rgba(255,255,255,.08)}
-  .small{font-size:13px;margin-top:14px}
+  .btn{display:block;margin-top:16px;text-align:center;background:linear-gradient(135deg,var(--pink),var(--acc));color:#fff;border-radius:14px;padding:14px;font:800 17px system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 30px rgba(255,143,184,.35);transition:transform .15s}.btn:hover{transform:translateY(-2px)}
+  .note{text-align:center;color:var(--mut);font-size:13px;margin:12px 0 0}
+  @media(max-width:760px){main{flex-direction:column;padding-top:8px}.neko{height:300px;margin:0 0 -30px}.card{padding:30px 20px 22px}h1{font-size:25px}}
+  @media(prefers-reduced-motion:reduce){.neko,.fl{animation:none}}
 </style>
 </head>
 <body>
-<main><div class="card">
-  <div class="brand"><img src="img/icon.png" alt="">NekoNext</div>
-  <h1 id="t"></h1>
-  <div class="code" id="code"></div>
-  <ol><li id="s1"></li><li id="s2"></li><li id="s3"></li></ol>
-  <a class="btn" id="store" href="https://chromewebstore.google.com/detail/pggapfaakjffefgmdlioapcllechjbhl" target="_blank" rel="noopener"></a>
-  <button class="btn ghost" id="copy" type="button"></button>
-  <p class="small" id="note"></p>
-</div></main>
+<div class="sky"></div>
+<span class="fl" style="left:8%;top:20%">🍿</span><span class="fl" style="right:10%;top:14%;animation-delay:-2s">💜</span><span class="fl" style="right:16%;bottom:14%;animation-delay:-4s">✨</span>
+<main>
+  <img class="neko" src="img/neko-davet.webp" alt="">
+  <div class="card">
+    <span class="badge" id="badge"></span>
+    <div class="brand"><img src="img/icon.png" alt="">NekoNext</div>
+    <h1 id="t"></h1>
+    <p class="sub" id="sub"></p>
+    <div class="code"><b id="code"></b><button id="copy" type="button"></button></div>
+    <ol><li><span id="s1"></span></li><li><span id="s2"></span></li><li><span id="s3"></span></li></ol>
+    <a class="btn" id="store" href="https://chromewebstore.google.com/detail/pggapfaakjffefgmdlioapcllechjbhl" target="_blank" rel="noopener"></a>
+    <p class="note" id="note"></p>
+  </div>
+</main>
 <script>
 // Eklenti kuruluysa bu sayfa açılır açılmaz eklentinin katılma sayfasına geçilir; bu metinler eklentisi olmayanlar içindir.
+// [başlık, rozet, alt metin, adım1, adım2, adım3, mağaza düğmesi, kopyala, kopyalandı, not]
 const L = {
-  en: ['You\'re invited to watch together!', 'Install <b>NekoNext</b> from the Chrome Web Store.', 'Open this link again, or click the NekoNext icon → <b>Room</b> tab.', 'Enter the room code above and join.', 'Get NekoNext', 'Copy room code', 'Copied!', 'The host controls playback; everyone can chat.'],
-  tr: ['Birlikte izleme davetin var!', '<b>NekoNext</b>\'i Chrome Web Mağazası\'ndan kur.', 'Bu linki tekrar aç ya da NekoNext simgesi → <b>Oda</b> sekmesine gir.', 'Yukarıdaki oda kodunu yaz ve katıl.', 'NekoNext\'i kur', 'Oda kodunu kopyala', 'Kopyalandı!', 'Oynatmayı oda sahibi yönetir, sohbet herkese açık.'],
-  ru: ['Тебя приглашают смотреть вместе!', 'Установи <b>NekoNext</b> из Chrome Web Store.', 'Открой эту ссылку снова или нажми значок NekoNext → вкладка <b>Комната</b>.', 'Введи код комнаты выше и войди.', 'Установить NekoNext', 'Скопировать код', 'Скопировано!', 'Воспроизведением управляет хозяин, чат для всех.'],
-  uk: ['Тебе запрошують дивитися разом!', 'Встанови <b>NekoNext</b> з Chrome Web Store.', 'Відкрий це посилання знову або натисни значок NekoNext → вкладка <b>Кімната</b>.', 'Введи код кімнати вище й увійди.', 'Встановити NekoNext', 'Скопіювати код', 'Скопійовано!', 'Відтворенням керує господар, чат для всіх.'],
-  ro: ['Ești invitat să vă uitați împreună!', 'Instalează <b>NekoNext</b> din Chrome Web Store.', 'Deschide din nou acest link sau apasă pictograma NekoNext → fila <b>Cameră</b>.', 'Scrie codul camerei de mai sus și intră.', 'Instalează NekoNext', 'Copiază codul', 'Copiat!', 'Gazda controlează redarea, chatul e pentru toți.'],
-  es: ['¡Te invitaron a ver juntos!', 'Instala <b>NekoNext</b> desde Chrome Web Store.', 'Abre este enlace otra vez o pulsa el icono de NekoNext → pestaña <b>Sala</b>.', 'Escribe el código de arriba y únete.', 'Instalar NekoNext', 'Copiar código', '¡Copiado!', 'El anfitrión controla la reproducción; el chat es para todos.'],
-  pt: ['Você foi convidado para assistir junto!', 'Instale o <b>NekoNext</b> pela Chrome Web Store.', 'Abra este link de novo ou clique no ícone do NekoNext → aba <b>Sala</b>.', 'Digite o código acima e entre.', 'Instalar NekoNext', 'Copiar código', 'Copiado!', 'O anfitrião controla a reprodução; o chat é para todos.'],
-  fr: ['Tu es invité à regarder ensemble !', 'Installe <b>NekoNext</b> depuis le Chrome Web Store.', 'Rouvre ce lien ou clique sur l\'icône NekoNext → onglet <b>Salon</b>.', 'Saisis le code ci-dessus et rejoins.', 'Installer NekoNext', 'Copier le code', 'Copié !', 'L\'hôte contrôle la lecture ; le chat est ouvert à tous.'],
-  de: ['Du bist zum gemeinsamen Schauen eingeladen!', 'Installiere <b>NekoNext</b> aus dem Chrome Web Store.', 'Öffne diesen Link erneut oder klicke auf das NekoNext-Symbol → Tab <b>Raum</b>.', 'Gib den Raumcode oben ein und tritt bei.', 'NekoNext holen', 'Code kopieren', 'Kopiert!', 'Der Gastgeber steuert die Wiedergabe; alle können chatten.'],
-  it: ['Sei invitato a guardare insieme!', 'Installa <b>NekoNext</b> dal Chrome Web Store.', 'Riapri questo link o clicca l\'icona di NekoNext → scheda <b>Stanza</b>.', 'Inserisci il codice qui sopra ed entra.', 'Installa NekoNext', 'Copia codice', 'Copiato!', 'L\'host controlla la riproduzione; la chat è per tutti.'],
-  pl: ['Masz zaproszenie do wspólnego oglądania!', 'Zainstaluj <b>NekoNext</b> z Chrome Web Store.', 'Otwórz ten link ponownie albo kliknij ikonę NekoNext → karta <b>Pokój</b>.', 'Wpisz powyższy kod i dołącz.', 'Pobierz NekoNext', 'Kopiuj kod', 'Skopiowano!', 'Gospodarz steruje odtwarzaniem; czat jest dla wszystkich.'],
-  ja: ['一緒に見る招待が届いています！', 'Chrome ウェブストアから <b>NekoNext</b> をインストール。', 'このリンクをもう一度開くか、NekoNext アイコン →「<b>ルーム</b>」タブを開く。', '上のルームコードを入力して参加。', 'NekoNext を入手', 'コードをコピー', 'コピーしました！', '再生はホストが操作し、チャットは全員が使えます。']
+  en: ['Come watch with me!', '🍿 Movie night invite', 'A friend opened a room. Watch at the same time and chat together.', 'Install <b>NekoNext</b> for free, it takes a few seconds.', 'Open this link again, or enter the code in NekoNext → <b>Room</b> tab.', 'Type your name and press <b>Join the room</b>. 🍿', 'Get NekoNext for free', 'Copy', 'Copied!', 'No account needed · The host controls playback, everyone can chat'],
+  tr: ['Gel, birlikte izleyelim!', '🍿 Film gecesi daveti', 'Bir arkadaşın oda açtı. Aynı anda izleyin, birlikte sohbet edin.', '<b>NekoNext</b>\'i ücretsiz kur, birkaç saniye sürer.', 'Bu linki tekrar aç ya da NekoNext → <b>Oda</b> sekmesinde kodu gir.', 'Adını yaz ve <b>Odaya katıl</b>\'a bas. 🍿', 'NekoNext\'i ücretsiz kur', 'Kopyala', 'Kopyalandı!', 'Hesap gerekmez · Oynatmayı oda sahibi yönetir, sohbet herkese açık'],
+  ru: ['Давай смотреть вместе!', '🍿 Приглашение на киновечер', 'Друг открыл комнату. Смотрите одновременно и общайтесь в чате.', 'Установи <b>NekoNext</b> бесплатно, это займёт пару секунд.', 'Открой эту ссылку снова или введи код в NekoNext → вкладка <b>Комната</b>.', 'Введи имя и нажми <b>Войти в комнату</b>. 🍿', 'Установить NekoNext бесплатно', 'Копировать', 'Скопировано!', 'Без регистрации · Воспроизведением управляет хозяин, чат для всех'],
+  uk: ['Давай дивитися разом!', '🍿 Запрошення на кіновечір', 'Друг відкрив кімнату. Дивіться одночасно й спілкуйтеся в чаті.', 'Встанови <b>NekoNext</b> безкоштовно, це займе кілька секунд.', 'Відкрий це посилання знову або введи код у NekoNext → вкладка <b>Кімната</b>.', 'Введи ім\'я й натисни <b>Увійти в кімнату</b>. 🍿', 'Встановити NekoNext безкоштовно', 'Копіювати', 'Скопійовано!', 'Без реєстрації · Відтворенням керує господар, чат для всіх'],
+  ro: ['Hai să ne uităm împreună!', '🍿 Invitație la seară de film', 'Un prieten a deschis o cameră. Vă uitați în același timp și vorbiți pe chat.', 'Instalează <b>NekoNext</b> gratuit, durează câteva secunde.', 'Deschide din nou acest link sau scrie codul în NekoNext → fila <b>Cameră</b>.', 'Scrie-ți numele și apasă <b>Intră în cameră</b>. 🍿', 'Instalează NekoNext gratuit', 'Copiază', 'Copiat!', 'Fără cont · Gazda controlează redarea, chatul e pentru toți'],
+  es: ['¡Ven a ver conmigo!', '🍿 Invitación a noche de cine', 'Un amigo abrió una sala. Vean a la vez y chateen juntos.', 'Instala <b>NekoNext</b> gratis, tarda unos segundos.', 'Abre este enlace otra vez o escribe el código en NekoNext → pestaña <b>Sala</b>.', 'Escribe tu nombre y pulsa <b>Unirse a la sala</b>. 🍿', 'Instalar NekoNext gratis', 'Copiar', '¡Copiado!', 'Sin cuenta · El anfitrión controla la reproducción, el chat es para todos'],
+  pt: ['Vem assistir comigo!', '🍿 Convite para sessão de cinema', 'Um amigo abriu uma sala. Assistam ao mesmo tempo e conversem no chat.', 'Instale o <b>NekoNext</b> grátis, leva poucos segundos.', 'Abra este link de novo ou digite o código no NekoNext → aba <b>Sala</b>.', 'Digite seu nome e toque em <b>Entrar na sala</b>. 🍿', 'Instalar o NekoNext grátis', 'Copiar', 'Copiado!', 'Sem conta · O anfitrião controla a reprodução, o chat é para todos'],
+  fr: ['Viens regarder avec moi !', '🍿 Invitation soirée ciné', 'Un ami a ouvert un salon. Regardez en même temps et discutez ensemble.', 'Installe <b>NekoNext</b> gratuitement, ça prend quelques secondes.', 'Rouvre ce lien ou saisis le code dans NekoNext → onglet <b>Salon</b>.', 'Écris ton nom et appuie sur <b>Rejoindre le salon</b>. 🍿', 'Installer NekoNext gratuitement', 'Copier', 'Copié !', 'Sans compte · L\'hôte contrôle la lecture, le chat est ouvert à tous'],
+  de: ['Komm, wir schauen zusammen!', '🍿 Einladung zum Filmabend', 'Ein Freund hat einen Raum geöffnet. Schaut gleichzeitig und chattet zusammen.', 'Installiere <b>NekoNext</b> kostenlos, das dauert nur Sekunden.', 'Öffne diesen Link erneut oder gib den Code in NekoNext → Tab <b>Raum</b> ein.', 'Gib deinen Namen ein und tippe auf <b>Raum beitreten</b>. 🍿', 'NekoNext kostenlos holen', 'Kopieren', 'Kopiert!', 'Kein Konto nötig · Der Gastgeber steuert die Wiedergabe, alle können chatten'],
+  it: ['Vieni a guardare con me!', '🍿 Invito alla serata film', 'Un amico ha aperto una stanza. Guardate insieme e chattate.', 'Installa <b>NekoNext</b> gratis, ci vogliono pochi secondi.', 'Riapri questo link o inserisci il codice in NekoNext → scheda <b>Stanza</b>.', 'Scrivi il tuo nome e premi <b>Entra nella stanza</b>. 🍿', 'Installa NekoNext gratis', 'Copia', 'Copiato!', 'Nessun account · L\'host controlla la riproduzione, la chat è per tutti'],
+  pl: ['Chodź, obejrzyjmy razem!', '🍿 Zaproszenie na wieczór filmowy', 'Znajomy otworzył pokój. Oglądajcie jednocześnie i rozmawiajcie na czacie.', 'Zainstaluj <b>NekoNext</b> za darmo, to zajmie kilka sekund.', 'Otwórz ten link ponownie albo wpisz kod w NekoNext → karta <b>Pokój</b>.', 'Wpisz swoje imię i kliknij <b>Dołącz do pokoju</b>. 🍿', 'Pobierz NekoNext za darmo', 'Kopiuj', 'Skopiowano!', 'Bez konta · Gospodarz steruje odtwarzaniem, czat jest dla wszystkich'],
+  ja: ['一緒に見よう！', '🍿 映画ナイトへの招待', '友だちがルームを開きました。同時に見て、チャットで話そう。', '<b>NekoNext</b> を無料でインストール（数秒で完了）。', 'このリンクをもう一度開くか、NekoNext →「<b>ルーム</b>」タブでコードを入力。', '名前を入れて「<b>ルームに参加</b>」を押す。🍿', 'NekoNext を無料で入手', 'コピー', 'コピーしました！', 'アカウント不要 · 再生はホストが操作、チャットは全員OK']
 };
 const lang = (navigator.languages || [navigator.language || 'en']).map((l) => l.slice(0, 2).toLowerCase()).find((l) => L[l]) || 'en';
 const t = L[lang];
 document.documentElement.lang = lang;
 const code = (new URLSearchParams(location.search).get('oda') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
-document.getElementById('t').textContent = t[0];
-['s1', 's2', 's3'].forEach((id, i) => { document.getElementById(id).innerHTML = t[i + 1]; });
-document.getElementById('code').textContent = code ? code.slice(0, 3) + ' ' + code.slice(3) : '— — —';
-document.getElementById('store').textContent = t[4];
-const cp = document.getElementById('copy');
-cp.textContent = t[5];
-cp.onclick = async () => { try { await navigator.clipboard.writeText(code); cp.textContent = t[6]; setTimeout(() => { cp.textContent = t[5]; }, 1500); } catch (e) {} };
-document.getElementById('note').textContent = t[7];
+const $ = (id) => document.getElementById(id);
+$('t').textContent = t[0]; $('badge').textContent = t[1]; $('sub').textContent = t[2];
+['s1', 's2', 's3'].forEach((id, i) => { $(id).innerHTML = t[i + 3]; });
+$('code').textContent = code ? code.slice(0, 3) + ' ' + code.slice(3) : '— — —';
+$('store').textContent = t[6];
+const cp = $('copy');
+cp.textContent = t[7]; cp.hidden = !code;
+cp.onclick = async () => { try { await navigator.clipboard.writeText(code); cp.textContent = t[8]; setTimeout(() => { cp.textContent = t[7]; }, 1500); } catch (e) {} };
+$('note').textContent = t[9];
 </script>
 </body>
 </html>
